@@ -149,7 +149,7 @@ module.exports = function(options) {
               // grunt.event.emit('connect.' + taskTarget + '.listening', hostname, address.port);
             })
             .on('error', function(err) {
-              gutil.error('error:', err);
+              gutil.log('error:', err);
               // if (err.code === 'EADDRINUSE') {
               //   grunt.fatal('Port ' + foundPort + ' is already in use by another process.');
               // } else {
