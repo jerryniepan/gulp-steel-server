@@ -1,1 +1,1 @@
-# gulp-steel-wrap-amd
+# gulp-steel-server
