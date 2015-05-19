@@ -1,15 +1,16 @@
 /**
- * define transport
+ * gulp-steel-server
  * @author wangzheng4@Finrila
  */
 'use strict';
 
 var extend = require('util')._extend;
+var gulp = require('gulp');
 var path = require('path');
 var server = require('./server');
-var middleware = require('./lib/connect/middleware');
 var pm2 = require('pm2');
-var pm2_serverName = 'Steel_pm2_' + __dirname.replace(/\:/g, '').replace(/\/|\\/g, '_');;
+var pm2_serverName = 'Steel_pm2_' + __dirname.replace(/\:/g, '').replace(/\/|\\/g, '_');
+var isWindows = require('os').platform().toLowerCase().indexOf('win') > -1;
 
 exports = module.exports = function(options, pm2_options) {
 
@@ -27,57 +28,72 @@ exports = module.exports = function(options, pm2_options) {
             'img*.t.sinajs.cn/*': 'sinajs.xdwscache.glb0.lxdns.com',
             'tjs.sjs.sinajs.cn/*': 'sinajs.xdwscache.glb0.lxdns.com'
         },
-        middleware: middleware,
         pm2: false
     }, options);
 
-    if (!options.pm2) {
-        server(options);
+
+    if (isWindows || !options.pm2) {
+        if (isWindows) {
+            doStartServer();
+        } else {
+            pm2.connect(function(err) {
+                deletePm2();
+            });
+            doStartServer();
+        }
+
         return;
+    }
+
+    function doStartServer() {
+        gulp.start(options.task);
+        server(options);
     }
 
     process.env['server_options'] = JSON.stringify(options);
 
     pm2_options = extend({
-		script: path.join(__dirname, './pm2_boot.js'),
-		name: pm2_serverName
-	}, pm2_options);
+        script: path.join(__dirname, './pm2_boot.js'),
+        name: pm2_serverName
+    }, pm2_options);
 
     // Connect or launch PM2
     pm2.connect(function(err) {
-		pm2.list(function(err, process_list) {
-			deletePm2();
-			// Disconnect to PM2
-			
-			pm2.start(pm2_options, function(err, proc) {
-				if (err) throw new Error('err');
-				// Get all processes running
-				pm2.list(function(err, process_list) {
-					pm2.disconnect(function() {
-						process.exit(0)
-					});
-				});
-			});
-		});
-		//pm2.delete(pm2_serverName);
+
+        deletePm2();
+
+        pm2.list(function(err, process_list) {
+            // Disconnect to PM2
+
+            pm2.start(pm2_options, function(err, proc) {
+                if (err) throw new Error('err');
+                // Get all processes running
+                pm2.list(function(err, process_list) {
+                    pm2.disconnect(function() {
+                        process.exit(0)
+                    });
+                });
+            });
+        });
+        //pm2.delete(pm2_serverName);
         // Start a script on the current folder
-        
+
     })
 
 };
 
 exports.stop = function() {
-	pm2.connect(function(err) {
-		deletePm2();
-	});
+    pm2.connect(function(err) {
+        deletePm2();
+    });
 };
 
 function deletePm2() {
-	pm2.list(function(err, process_list) {
-		process_list.forEach(function(item) {
-			if (item.name === pm2_serverName) {
-				pm2.delete(item.pm_id);
-			}
-		});
-	});
+    pm2.list(function(err, process_list) {
+        process_list.forEach(function(item) {
+            if (item.name === pm2_serverName) {
+                pm2.delete(item.pm_id);
+            }
+        });
+    });
 }
