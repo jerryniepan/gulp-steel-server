@@ -8,9 +8,12 @@ var extend = require('util')._extend;
 var gulp = require('gulp');
 var path = require('path');
 var server = require('./server');
-var pm2 = require('pm2');
 var pm2_serverName = 'Steel_pm2_' + __dirname.replace(/\:/g, '').replace(/\/|\\/g, '_');
 var isWindows = require('os').platform().toLowerCase().indexOf('win') > -1;
+var pm2;
+if (!isWindows) {
+    pm2 = require('pm2');
+}
 
 exports = module.exports = function(options, pm2_options) {
 
@@ -46,7 +49,7 @@ exports = module.exports = function(options, pm2_options) {
     }
 
     function doStartServer() {
-        gulp.start(options.task);
+        gulp.start(options.gulpTask);
         server(options);
     }
 
