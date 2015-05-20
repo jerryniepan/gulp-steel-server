@@ -49,7 +49,7 @@ exports = module.exports = function(options, pm2_options) {
     }
 
     function doStartServer() {
-        gulp.start(options.gulpTask);
+        gulp.start(options.tasks);
         server(options);
     }
 
