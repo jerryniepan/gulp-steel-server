@@ -1,6 +1,6 @@
 /**
  * gulp-steel-server
- * @author wangzheng4@Finrila
+ * @author Finrila finrila@gmail.com
  */
 'use strict';
 
