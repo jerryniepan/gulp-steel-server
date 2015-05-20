@@ -136,7 +136,6 @@ module.exports = function(options) {
                 if (options.port !== foundPort && options.useAvailablePort === false) {
                     gutil.log('Port ' + options.port + ' is already in use by another process.');
                 }
-                gutil.log(foundPort, options.hostname);
                 server
                     .listen(foundPort, options.hostname)
                     .on('listening', function() {
@@ -153,7 +152,7 @@ module.exports = function(options) {
                         if (err.code === 'EADDRINUSE') {
                             gutil.log('Port ' + foundPort + ' is already in use by another process.');
                         } else {
-                            gutil.log('error:', err);
+                            gutil.log('error:' + err);
                         }
                     });
             });
