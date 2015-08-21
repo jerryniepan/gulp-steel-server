@@ -1,6 +1,7 @@
 {
   "name": "gulp-steel-jadefn-wrap-commonjs",
   "version": "0.0.15",
+  "version": "0.0.14",
   "description": "steel jadefn wrap commonjs",
   "license": "MIT",
   "repository": {
