@@ -1,0 +1,37 @@
+{
+  "name": "gulp-steel-server",
+  "version": "0.0.16",
+  "description": "steel server",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finrila/gulp-steel-server"
+  },
+  "author": {
+    "name": "Finrila",
+    "email": "finrila@gmail.com",
+    "url": "http://codezz.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "steel"
+  ],
+  "dependencies": {
+	"gulp-util": "^3.0.2",
+    "connect": "~2.19.5",
+	"connect-livereload": "~0.4.0",
+    "portscanner": "~0.2.3",
+	"jade": "1.7.0",
+    "async": "~0.9.0",
+	"pm2": "~0.12.15"
+  },
+  "devDependencies": {
+  },
+  "main": "index.js",
+  "homepage": "https://github.com/finrila/gulp-steel-server"
+}

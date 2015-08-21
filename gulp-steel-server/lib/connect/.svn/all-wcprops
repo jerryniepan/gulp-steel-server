@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/weibo/!svn/ver/1080268/ria/framework/Steel/steel-npm/gulp-steel-server/lib/connect
+END
+http_php_route.js
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/weibo/!svn/ver/1080268/ria/framework/Steel/steel-npm/gulp-steel-server/lib/connect/http_php_route.js
+END
+connect-proxy.js
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/weibo/!svn/ver/1080268/ria/framework/Steel/steel-npm/gulp-steel-server/lib/connect/connect-proxy.js
+END
+http_api.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/weibo/!svn/ver/1080268/ria/framework/Steel/steel-npm/gulp-steel-server/lib/connect/http_api.js
+END
+access-control-allow.js
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/weibo/!svn/ver/1080268/ria/framework/Steel/steel-npm/gulp-steel-server/lib/connect/access-control-allow.js
+END
+pathnamePrefix.js
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/weibo/!svn/ver/1080268/ria/framework/Steel/steel-npm/gulp-steel-server/lib/connect/pathnamePrefix.js
+END
+middleware.js
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/weibo/!svn/ver/1080268/ria/framework/Steel/steel-npm/gulp-steel-server/lib/connect/middleware.js
+END
+manifest_header.js
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/weibo/!svn/ver/1079616/ria/framework/Steel/steel-npm/gulp-steel-server/lib/connect/manifest_header.js
+END
+connect-json.js
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/weibo/!svn/ver/1080268/ria/framework/Steel/steel-npm/gulp-steel-server/lib/connect/connect-json.js
+END
